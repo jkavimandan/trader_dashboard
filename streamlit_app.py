@@ -110,7 +110,7 @@ def pair_learned_trades() -> pd.DataFrame:
             "exit_timestamp": paired["next_timestamp"].dt.strftime("%Y-%m-%d %H:%M"),
             "entry_price": paired["entry_price"],
             "exit_price": paired["next_exit_price"],
-            "profit amount($)": paired["profit_amount"],
+            "profit amount($)": round(paired["profit_amount"],2),
             "pnl_pct": paired["pnl_pct"],
             "expected_reward": paired["expected_reward"],
             "conviction_score": paired["conviction_score"],
