@@ -142,9 +142,11 @@ else:
     avg_pnl = valid_pnl.mean() * 100 if not valid_pnl.empty else 0.0
 
     # -----------------------------
-    # Capital Curve + Drawdown
+    # Capital Curve + Drawdown (FIXED)
     # -----------------------------
-    profits = filtered_df["profit amount($)"].fillna(0)
+    chron_df = filtered_df.sort_values("entry_timestamp").reset_index(drop=True)
+
+    profits = chron_df["profit amount($)"].fillna(0)
     capital_curve = initial_capital + profits.cumsum()
 
     total_profit = profits.sum()
@@ -171,13 +173,15 @@ else:
     col8.metric("Max Drawdown (%)", f"{max_drawdown_pct:.2f}%")
 
     # -----------------------------
-    # Equity Curve Chart
+    # Equity Curve Chart (FIXED)
     # -----------------------------
     st.subheader("📈 Equity Curve (Capital Over Time)")
+
     equity_df = pd.DataFrame({
-        "timestamp": filtered_df["entry_timestamp"],
+        "timestamp": chron_df["entry_timestamp"],
         "capital": capital_curve
     })
+
     st.line_chart(equity_df.set_index("timestamp"))
 
     # -----------------------------
