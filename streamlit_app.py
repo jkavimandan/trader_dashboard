@@ -34,7 +34,7 @@ def init_connection():
 
 client = init_connection()
 db = client[st.secrets["mongo"]["db_name"]]
-trades_collection = db["backtest_trades"]
+trades_collection = db["trading_signals"]
 
 
 # -----------------------------
