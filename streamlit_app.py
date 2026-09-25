@@ -123,8 +123,8 @@ else:
     col5.metric("Position Size", f"${position_size:,}")
 
     col6, col7, col8 = st.columns(3)
-    col6.metric("Total Profit (\()", f"\){total_profit:,.2f}")
-    col7.metric("Ending Capital (\()", f"\){ending_capital:,.2f}")
+    col6.metric("Total Profit", f"${total_profit:,.2f}")
+    col7.metric("Ending Capital", f"${ending_capital:,.2f}")
     col8.metric("Max Drawdown (%)", f"{max_drawdown_pct:.2f}%")
 
     # -----------------------------
